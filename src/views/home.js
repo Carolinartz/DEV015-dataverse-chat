@@ -5,7 +5,6 @@ import { Header } from "../components/header.js";
 import { main } from "../components/main.js";
 import { renderItems } from "../components/cards.js";
 import dataset from "../data/dataset.js"
-
 export function Principal(props) {
   const viewEl = document.createElement('div');
   viewEl.setAttribute("class","view");
