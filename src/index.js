@@ -33,23 +33,23 @@ setRoutes(routes); // Assign the routes
   
 });*/
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
   const rootElement = document.querySelector('#root');
-  
   rootElement.appendChild(Header());
   rootElement.appendChild(main());
+
   const platformSelect = document.querySelector('#platform');
   const sortBySelect = document.querySelector('#sortBy');
   const buttonReset = document.querySelector('#buttonClear');
   const buttonStats = document.querySelector('#buttonStats');
   const resultsContainer = document.querySelector('#results');
 
+  const originalData = [...data];
+
+  console.log({ platformSelect, sortBySelect, buttonReset, buttonStats, resultsContainer }); // Debugging
+
   if (platformSelect && sortBySelect && buttonReset && buttonStats && resultsContainer) {
 
-    const originalData = [...data];
-
-
-    //función para renderizar datos filtrados y ordenados
     const renderFilteredData = () => {
       const platform = platformSelect.value;
       const sortByOption = sortBySelect.value.split('-');
@@ -57,48 +57,48 @@ document.addEventListener('DOMContentLoaded', () => {
       const sortOrder = sortByOption[1];
 
       let filteredData = data;
-      if (platform) { //filtra por plataforma si está seleccionada
+      if (platform) {
         filteredData = filterData(filteredData, 'streamingPlatform', platform);
       }
 
-      if (sortBy && sortOrder) { //ordena los datos si se ha seleccionado una opción de ordenar
+      if (sortBy && sortOrder) {
         filteredData = sortData(filteredData, sortBy, sortOrder);
       }
 
-      rootElement.innerHTML = ''; //limpia el contenido previo
-      rootElement.appendChild(Header());
-      rootElement.appendChild(main());
-      rootElement.appendChild(renderItems(filteredData));
-      rootElement.appendChild(Footer());
+      console.log('Filtered Data:', filteredData); // Debugging
+      resultsContainer.innerHTML = '';
+      resultsContainer.appendChild(renderItems(filteredData));
     };
 
-    //Manejador de eventos para actualizar vista cuando sucedan los filtros/orden
-    platformSelect.addEventListener('change', renderFilteredData);
-    sortBySelect.addEventListener('change', renderFilteredData);
-  
-    //Botón para limpiar datos seleccionados
-    buttonReset.addEventListener('click', () => {
-      sortBySelect.selectedIndex = 0; 
-      platformSelect.selectedIndex = 0;  
-      rootElement.innerHTML = '';       
-      rootElement.append(renderItems(originalData)); 
+    platformSelect.addEventListener('change', () => {
+      console.log('Platform changed:', platformSelect.value);
+      renderFilteredData();
     });
-  
-    //Botón para mostrar estadísticas
+
+    sortBySelect.addEventListener('change', () => {
+      console.log('Sort by changed:', sortBySelect.value);
+      renderFilteredData();
+    });
+
+    buttonReset.addEventListener('click', () => {
+      console.log('Reset button clicked');
+      platformSelect.selectedIndex = 0;
+      sortBySelect.selectedIndex = 0;
+      resultsContainer.innerHTML = '';
+      resultsContainer.appendChild(renderItems(originalData));
+    });
+
     buttonStats.addEventListener('click', () => {
+      console.log('Stats button clicked');
       const stats = computeStats(data);
-      
-      const resultsContainer = document.querySelector('#results');
+      console.log('Stats:', stats); // Debugging
       resultsContainer.innerHTML = `
         <h4><span class="highlight">${stats.avgYears.toFixed(2)} años</span> promedia una transmisión.</h4>
-         `;
-    });  
-    //setRootEl(rootElement);
+      `;
+    });
 
-    rootElement.appendChild(renderItems(data));
-    rootElement.appendChild(Footer());
-    //onURLChange();
-      
+    resultsContainer.appendChild(renderItems(data));
   }
-}
-);
+
+  rootElement.appendChild(Footer());
+});
