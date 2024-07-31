@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const originalData = [...data];
 
-  console.log({ platformSelect, sortBySelect, buttonReset, buttonStats, resultsContainer }); // Debugging
+  //console.log({ platformSelect, sortBySelect, buttonReset, buttonStats, resultsContainer }); 
 
   if (platformSelect && sortBySelect && buttonReset && buttonStats && resultsContainer) {
 
@@ -65,23 +65,23 @@ window.addEventListener('DOMContentLoaded', () => {
         filteredData = sortData(filteredData, sortBy, sortOrder);
       }
 
-      console.log('Filtered Data:', filteredData); // Debugging
+      //console.log('Filtered Data:', filteredData); 
       resultsContainer.innerHTML = '';
       resultsContainer.appendChild(renderItems(filteredData));
     };
 
     platformSelect.addEventListener('change', () => {
-      console.log('Platform changed:', platformSelect.value);
+      //console.log('Platform changed:', platformSelect.value);
       renderFilteredData();
     });
 
     sortBySelect.addEventListener('change', () => {
-      console.log('Sort by changed:', sortBySelect.value);
+      // console.log('Sort by changed:', sortBySelect.value);
       renderFilteredData();
     });
 
     buttonReset.addEventListener('click', () => {
-      console.log('Reset button clicked');
+      //console.log('Reset button clicked');
       platformSelect.selectedIndex = 0;
       sortBySelect.selectedIndex = 0;
       resultsContainer.innerHTML = '';
@@ -89,9 +89,9 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     buttonStats.addEventListener('click', () => {
-      console.log('Stats button clicked');
+      //console.log('Stats button clicked');
       const stats = computeStats(data);
-      console.log('Stats:', stats); // Debugging
+      //console.log('Stats:', stats); // Debugging
       resultsContainer.innerHTML = `
         <h4><span class="highlight">${stats.avgYears.toFixed(2)} años</span> promedia una transmisión.</h4>
       `;
