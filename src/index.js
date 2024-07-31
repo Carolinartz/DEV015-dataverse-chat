@@ -35,6 +35,8 @@ setRoutes(routes); // Assign the routes
 
 window.addEventListener('DOMContentLoaded', () => {
   const rootElement = document.querySelector('#root');
+  setRootEl(rootElement);
+  onURLChange(); 
   rootElement.appendChild(Header());
   rootElement.appendChild(main());
 
