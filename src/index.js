@@ -18,16 +18,15 @@ setRoutes(routes); // Assign the routes
 
 // Set the root element where views will be rendered
 
-window.addEventListener('DOMContentLoaded', () => { 
+/*window.addEventListener('DOMContentLoaded', () => { 
   const rootElement = document.getElementById("root");
   //const view = Principal ({ data: dataset });
   //rootElement.appendChild(view);
 
   //const header ???
   //constfooter ??
-  setRootEl(rootElement);
-  onURLChange();
-});
+  
+});*/
 
 document.addEventListener('DOMContentLoaded', () => {
   const rootElement = document.querySelector('#root');
@@ -85,8 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
         <h4><span class="highlight">${stats.avgYears.toFixed(2)} años</span> promedia una transmisión.</h4>
          `;
       });  
-
+      //setRootEl(rootElement);
       rootElement.appendChild(renderItems(data));
+      //onURLChange();
+      
     }
   }
 });
