@@ -15,4 +15,4 @@ export function Principal(props) {
   viewEl.appendChild(renderItems(data)); //paso data a renderitems
   viewEl.appendChild(Footer());
   return viewEl;
-}
+}//prueba de commit 
