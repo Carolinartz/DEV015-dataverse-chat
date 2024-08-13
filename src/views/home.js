@@ -1,11 +1,12 @@
 import { Footer } from "../components/footer.js";
-// import { navigateTo } from "../router.js";
+import { navigateTo } from "../router.js";
 import { Header } from "../components/header.js";
 import { main } from "../components/main.js";
 import { renderItems } from "../components/cards.js";
 import dataset from "../data/dataset.js";
 import { filterData, sortData, computeStats } from '../lib/dataFunctions.js';
 import { modal } from "./viewApi.js";
+import { getApiKey } from "../lib/apiKey.js";
 
 export function Principal(props) {
   const viewEl = document.createElement('div');
@@ -25,11 +26,12 @@ export function Principal(props) {
   const buttonStats = mainElement.querySelector('#buttonStats');
   const resultsContainer = mainElement.querySelector('#results');
   const linkAPI = mainElement.querySelector('#modalLink');
+  const ChatGrupal = mainElement.querySelector('#ChatGrupal')
   
   // Eliminamos la declaración de modalContainer
   // const modalContainer = mainElement.querySelector('#modal');
 
-  if (platformSelect && sortBySelect && buttonReset && buttonStats && resultsContainer && linkAPI) {
+  if (platformSelect && sortBySelect && buttonReset && buttonStats && resultsContainer) {
     const renderFilteredData = () => {
       const platform = platformSelect.value;
       const sortByOption = sortBySelect.value.split('-');
@@ -64,6 +66,11 @@ export function Principal(props) {
       resultsContainer.innerHTML = `
         <h4><span class="highlight">${stats.avgYears.toFixed(2)} años</span> promedia una transmisión.</h4>
       `;
+    });
+    ChatGrupal.addEventListener('click', () => {
+      if (!getApiKey()) {
+        main.appendChild(modal())}
+      navigateTo('/group-chat');
     });
 
     linkAPI.addEventListener('click', (event) => {

@@ -12,11 +12,11 @@ export const Fail = () => {
   const mainContent = document.createElement('div');
   mainContent.innerHTML = `
   <link rel="stylesheet" href="assets/CSS/styleFail.css">
+  <picture class="sciFiError">
+      <img src="assets/img/deadRobot.png" alt="unarmed robot">
+  </picture>
   <h1 class="errorNum">404</h1>
   <h2 class="headingError">¡Ups! Página no encontrada</h2>
-  <picture class="sciFiError">
-      <img src="assets/img/spacerocket2.png" alt="space rocket crashing">
-  </picture>
   <button id="backHome">Volver a home</button>
 `;
   viewEl.appendChild(mainContent);

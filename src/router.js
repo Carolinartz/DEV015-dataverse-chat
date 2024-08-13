@@ -29,7 +29,7 @@ const renderView = (pathName, props = {}) => {//FUNCIONA EN ROUTES LALMA A LA FU
   const viewFunc = ROUTES[pathName];   // find the correct view in ROUTES for the pathname
 
   if (!viewFunc) {
-    return navigateTo("/page/404");   // in case not found render the error view
+    return navigateTo("/error");   // in case not found render the error view
 
   }
   const viewEl = viewFunc(props);   // render the correct view passing the value of props

@@ -22,16 +22,34 @@ describe('sortData', () => {
     expect(sortedData[23].name).toBe('Westworld');
   });
 
+  it('se ordena la data por nombre en orden descendente', () => {
+    const sortedData = sortData(data, 'name', 'desc');
+    expect(sortedData[0].name).toBe('Westworld');
+    expect(sortedData[23].name).toBe('Altered Carbon');
+  });
+
   it('se ordena la data por año de lanzamiento ascendente', () => { 
     const sortedData = sortData(data, 'yearOfRelease','asc');
     expect(sortedData[0].facts.yearOfRelease).toBe('1959');
     expect(sortedData[23].facts.yearOfRelease).toBe('2020');
   });
 
+  it('se ordena la data por año de lanzamiento descendente', () => {
+    const sortedData = sortData(data, 'yearOfRelease', 'desc');
+    expect(sortedData[0].facts.yearOfRelease).toBe('2020');
+    expect(sortedData[23].facts.yearOfRelease).toBe('1959');
+  })
+
   it('se ordena la data por rating promedio ascendente', () => {
     const sortedData = sortData(data, 'averageRating', 'asc');
     expect(sortedData[0].facts.averageRating).toBe('7.2');
     expect(sortedData[23].facts.averageRating).toBe('9.2');
+  })
+
+  it('se ordena la data por rating promedio descendente', () => {
+    const sortedData = sortData(data, 'averageRating', 'desc');
+    expect(sortedData[0].facts.averageRating).toBe('9.2');
+    expect(sortedData[23].facts.averageRating).toBe('7.2');
   })
 });
 
