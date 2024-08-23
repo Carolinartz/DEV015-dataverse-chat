@@ -1,0 +1,83 @@
+/* MOBILE FIRST */
+
+/* número */
+.errorNum {
+  font-size: 100px;
+  color: #EB455F;
+  text-align: center;
+  margin-top: 20px;
+}
+  
+/* mensaje de error */
+.headingError {
+  font-size: 24px;
+  color: #FCFFE7;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+  
+/* imagen */
+.sciFiError img {
+  display: block;
+  margin: 50px auto;
+  max-width: 90%;
+  height: auto;
+}
+  
+/* botón */
+#backHome {
+  display: block;
+  margin: 50px auto;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #FCFFE7;
+  background-color: #EB455F;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+  
+#backHome:hover {
+  background-color: #0056b3;
+}
+  
+/* media query para tablets y desktop L*/
+@media (min-width: 768px) {
+/* número */
+  .errorNum {
+    display: none;
+  }
+}
+  /* imagen */
+  .sciFiError img {
+    max-width: 40%;
+    max-height: 80vh;
+}
+
+/* media query para pantallas muy grandes (desktop XL) */
+@media (min-width: 1024px) {
+  /* número */
+  .errorNum {
+    display: none;
+  }
+
+  /* mensaje de error */
+  .headingError {
+      font-size: 40px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+  }
+
+  /* imagen */
+  .sciFiError img {
+      max-width: 40%;
+      max-height: 80vh;
+  }
+
+  /* botón */
+  #backHome {
+      padding: 15px 30px;
+      font-size: 20px; /* Tamaño original para pantallas muy grandes */
+  }
+}

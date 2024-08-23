@@ -29,7 +29,7 @@ const renderView = (pathName, props = {}) => {//FUNCIONA EN ROUTES LALMA A LA FU
   const viewFunc = ROUTES[pathName];   // find the correct view in ROUTES for the pathname
 
   if (!viewFunc) {
-    return navigateTo("/page/404");   // in case not found render the error view
+    return navigateTo("/error");   // in case not found render the error view
 
   }
   const viewEl = viewFunc(props);   // render the correct view passing the value of props
@@ -39,10 +39,13 @@ const renderView = (pathName, props = {}) => {//FUNCIONA EN ROUTES LALMA A LA FU
 };
 
 export const navigateTo = (pathname, props = {}) => {//NAVEGA A UN RUTA DENTRO DEL SPA
-  window.history.pushState({}, pathname, window.location.origin + pathname);  //ACTUALIZA EL URL
+  const searchParams = new URLSearchParams(props).toString();  // Convierte props a query string
+  const url = `${window.location.origin}${pathname}?${searchParams}`;  // Construye la URL completa
+
+  window.history.pushState({}, pathname, url);  // Actualiza el URL con la nueva ruta y parámetros
 
   renderView(pathname, props);  // render the view with the pathname and props
-//LLAMA A LA FUNCION CON EL PATHNAME Y LOS PROPS
+//LLAMA A LA FUNCION CON EL PATHNAME
 };
 
 export const onURLChange = () => {//MANEJA LOS CAMBIOS DEL URL 

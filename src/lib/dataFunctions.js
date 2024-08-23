@@ -6,44 +6,16 @@ export const filterData = (data, filterBy, value) => {
   
 // Función para ordenar data por propiedad y orden específico
 export const sortData = (data, sortBy, sortOrder) => {
-  let sortedData;
-  
-  if (sortBy === 'name') {
-    sortedData = data.sort((a, b) => {
-      if (sortOrder === 'asc') {
-        return a.name.localeCompare(b.name); // Orden ascendente por nombre
-      } else {
-        return b.name.localeCompare(a.name); // Orden descendente por nombre
-      }
-    });
-  } else if (sortBy === 'id') {
-    sortedData = data.sort((a, b) => {
-      if (sortOrder === 'asc') {
-        return a.id.localeCompare(b.id); // Orden ascendente por id
-      } else {
-        return b.id.localeCompare(a.id); // Orden descendente por id
-      }
-    });
-  } else {
-    
-    const filteredData = data.filter(item => item.facts && item.facts[sortBy] !== undefined);
-    const mappedData = filteredData.map(item => ({
-      ...item,
-      sortByValue: item.facts[sortBy]
-    }));
-  
-    sortedData = mappedData.sort((a, b) => {
-      if (sortOrder === 'asc') {
-        return a.sortByValue - b.sortByValue; 
-      } else {
-        return b.sortByValue - a.sortByValue; 
-      }
-    });
-  }
-  
-  // Devolver los datos ordenados
-  return sortedData.map(({ sortByValue, ...rest }) => rest); // eslint-disable-line no-unused-vars
-  
+  //determinar la dirección del ordenamiento: 1 para ascendente y -1 para descendente
+  const sortDirection = sortOrder === 'asc' ? 1 : -1;
+  //utilizar el método sort del array para ordenar los datos
+  return data.sort((a,b) => {
+    //obtener los valores a comparar de cada objeto
+    const valueA = a.facts[sortBy] || a[sortBy];
+    const valueB = b.facts[sortBy] || b[sortBy];
+    //utilizar localeCompare para comparar cadenas de texto, multiplicado por sortDirection para ordenar ascendente o descendente
+    return sortDirection * valueA.localeCompare(valueB);
+  });
 };
   
 //Función para cálculo estadístico
