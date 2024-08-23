@@ -7,7 +7,9 @@
 * [3. Prototipo de baja fidelidad como solución](#3-Prototipo-de-baja-fidelidad-como-solución)
 * [4. Interfaz de usuaria](#4-Interfaz-de-usuaria)
 * [5. Problemas detectables a través de tests de usabilidad](#5-Problemas-detectables-através-de-test-de-usabilidad)
-* [6. Autoras](#5-Autoras)
+* [6. Autoras](#6-Autoras)
+* [7. Visita el proyecto](#7-Visita-el-proyecto)
+* 
 ***
 
 ## 1. Definición del producto
@@ -56,3 +58,6 @@ La interfaz de usuaria resultó así:
 ## 5. Autoras
   * [Carolina Ortiz](https://github.com/Carolinartz)
   * [Pascale Stavelot](https://github.com/Tolevats)
+
+## 6. Visita el proyecto
+  *Visita el proyecto en [https://scifichatdvo15.vercel.app/](https://scifichatdvo15.vercel.app/).
